@@ -142,6 +142,7 @@ export default function ProjectSidebar({ work, onClose, onPrev, onNext }: Projec
             <div className="p-9 sm:p-12 md:p-24">
               {/* Title */}
               <LiquidText
+                key={work.data.slug}
                 radius={0.2}
                 className="text-text-primary leading-[1] font-bold"
                 style={{
