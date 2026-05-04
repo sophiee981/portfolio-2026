@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { Analytics } from '@vercel/analytics/react'
 import { router } from '@/router'
 import LoadingScreen from '@/components/common/LoadingScreen'
 
@@ -22,6 +23,7 @@ export default function App() {
       >
         <RouterProvider router={router} />
       </div>
+      <Analytics />
     </>
   )
 }
