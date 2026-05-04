@@ -3,9 +3,11 @@ import { useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import CrtBackground from './CrtBackground'
+import { useGoogleAnalytics } from '@/hooks/useGoogleAnalytics'
 
 export default function RootLayout() {
   const location = useLocation()
+  useGoogleAnalytics()
 
   useEffect(() => {
     window.scrollTo(0, 0)
