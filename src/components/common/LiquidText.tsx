@@ -78,6 +78,28 @@ function measureFontMetrics(font: string) {
   return { ascent: m.actualBoundingBoxAscent, descent: m.actualBoundingBoxDescent }
 }
 
+// Global WebGL context tracker — Chrome limits ~16 active contexts.
+// Track all active instances so we can evict oldest when nearing limit.
+const activeInstances: Array<{ release: () => void; timestamp: number }> = []
+const MAX_CONTEXTS = 12 // Leave headroom under Chrome's 16 limit
+
+function registerContext(release: () => void) {
+  const entry = { release, timestamp: Date.now() }
+  activeInstances.push(entry)
+  // If over limit, evict oldest
+  while (activeInstances.length > MAX_CONTEXTS) {
+    const oldest = activeInstances.shift()
+    if (oldest) oldest.release()
+  }
+  return entry
+}
+
+function unregisterContext(entry: { release: () => void; timestamp: number } | null) {
+  if (!entry) return
+  const idx = activeInstances.indexOf(entry)
+  if (idx !== -1) activeInstances.splice(idx, 1)
+}
+
 interface Props { children: React.ReactNode; className?: string; style?: React.CSSProperties; radius?: number }
 
 export default function LiquidText({ children, className, style, radius = 0.25 }: Props) {
@@ -92,12 +114,19 @@ export default function LiquidText({ children, className, style, radius = 0.25 }
   const mouseRef = useRef({ x: 0.5, y: 0.5 })
   const hoverRef = useRef(0)
   const hoverTargetRef = useRef(0)
+  const poolEntryRef = useRef<{ release: () => void; timestamp: number } | null>(null)
   const [canvasReady, setCanvasReady] = useState(false)
+  const [contextLost, setContextLost] = useState(false)
 
   const initGL = useCallback(() => {
     const canvas = canvasRef.current; if (!canvas) return
-    const gl = canvas.getContext('webgl', { premultipliedAlpha: true, alpha: true }); if (!gl) return
+    const gl = canvas.getContext('webgl', { premultipliedAlpha: true, alpha: true, powerPreference: 'low-power' }); if (!gl) return
     glRef.current = gl
+
+    // Handle context loss from Chrome evicting oldest contexts
+    const onLost = (e: Event) => { e.preventDefault(); glRef.current = null; setCanvasReady(false); setContextLost(true) }
+    canvas.addEventListener('webglcontextlost', onLost)
+
     const vs = createShader(gl, gl.VERTEX_SHADER, VERTEX_SHADER)
     const fs = createShader(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER)
     const program = createProgram(gl, vs, fs); programRef.current = program; gl.useProgram(program)
@@ -179,15 +208,6 @@ export default function LiquidText({ children, className, style, radius = 0.25 }
   useEffect(() => {
     let isInited = false
 
-    const init = () => {
-      if (isInited) return
-      initGL()
-      if (!glRef.current) return // initGL bailed (no canvas / no webgl context)
-      isInited = true
-      startTimeRef.current = performance.now()
-      document.fonts.ready.then(() => requestAnimationFrame(() => requestAnimationFrame(() => captureText())))
-    }
-
     const release = () => {
       if (!isInited) return
       isInited = false
@@ -204,20 +224,32 @@ export default function LiquidText({ children, className, style, radius = 0.25 }
       hoverRef.current = 0
       hoverTargetRef.current = 0
       setCanvasReady(false)
+      unregisterContext(poolEntryRef.current)
+      poolEntryRef.current = null
+    }
+
+    const init = () => {
+      if (isInited) return
+      setContextLost(false)
+      initGL()
+      if (!glRef.current) return
+      isInited = true
+      // Register in global pool — may evict oldest if over limit
+      poolEntryRef.current = registerContext(release)
+      startTimeRef.current = performance.now()
+      document.fonts.ready.then(() => requestAnimationFrame(() => requestAnimationFrame(() => captureText())))
     }
 
     // Lazy init via IntersectionObserver — only consume a WebGL context when in viewport.
-    // rootMargin pre-warms before scroll arrives so there's no visible delay.
     const target = containerRef.current
     let observer: IntersectionObserver | null = null
     if (target && typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) init(); else release() },
-        { rootMargin: '200px' }
+        { rootMargin: '100px' }
       )
       observer.observe(target)
     } else {
-      // No observer support — fall back to eager init
       init()
     }
 
@@ -242,6 +274,7 @@ export default function LiquidText({ children, className, style, radius = 0.25 }
   useEffect(() => { if (canvasReady) renderStatic() }, [canvasReady, renderStatic])
 
   const onEnter = useCallback(() => {
+    if (!glRef.current) return
     hoverTargetRef.current = 1; cancelAnimationFrame(rafRef.current)
     rafRef.current = requestAnimationFrame(render)
   }, [render])
@@ -250,6 +283,11 @@ export default function LiquidText({ children, className, style, radius = 0.25 }
     const r = containerRef.current?.getBoundingClientRect(); if (!r) return
     mouseRef.current = { x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height }
   }, [])
+
+  // If context was lost (evicted by pool or Chrome), show plain text gracefully
+  if (contextLost) {
+    return <div className={className} style={style}>{children}</div>
+  }
 
   return (
     <div ref={containerRef} className="relative cursor-pointer overflow-visible" onMouseEnter={onEnter} onMouseLeave={onLeave} onMouseMove={onMove}>

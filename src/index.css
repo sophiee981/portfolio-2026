@@ -16,6 +16,40 @@
   font-display: swap;
 }
 
+/* ── Archivo (self-hosted) ────────────────────────────────── */
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo-Latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Press Start 2P (self-hosted) ────────────────────────── */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("/fonts/PressStart2P-Latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Bodoni Moda (self-hosted) ────────────────────────────── */
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/BodoniModa-Latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/BodoniModa-Italic-Latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ── Geist font ─────────────────────────────────────────── */
 @font-face {
   font-family: "Geist";
