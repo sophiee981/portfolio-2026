@@ -14,7 +14,7 @@ role: Product Design
 featured: false
 galleryLayout: full
 galleryTheme: dark
-galleryRowPattern: [1, 2, 2, 2, 2]
+galleryRowPattern: [1, 1, 1, 1, 2, 2]
 galleryMobileIndices: [4, 5, 6, 7]
 galleryImages:
   - "/images/video-fi/layout-1.png"
