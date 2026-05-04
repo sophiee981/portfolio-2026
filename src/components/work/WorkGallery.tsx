@@ -113,9 +113,9 @@ export default function WorkGallery({ data }: WorkGalleryProps) {
                 return <BrowserFrame key={ri} src={row[0].src} alt={`${data.title} gallery ${row[0].idx + 1}`} theme={data.galleryTheme} />
               }
               return (
-                <div key={ri} className="grid grid-cols-2 gap-6">
+                <div key={ri} className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   {row.map((item, ci) => (
-                    <img key={`${ri}-${ci}`} src={item.src} alt={`${data.title} gallery ${item.idx + 1}`} className="w-full rounded-2xl" loading="lazy" />
+                    <BrowserFrame key={`${ri}-${ci}`} src={item.src} alt={`${data.title} gallery ${item.idx + 1}`} theme={data.galleryTheme} />
                   ))}
                 </div>
               )
