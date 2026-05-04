@@ -65,10 +65,9 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       {/* Progress bar — bottom edge */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-border/50">
         <motion.div
-          className="h-full origin-left"
+          className="h-full origin-left bg-accent"
           style={{
-            background: 'linear-gradient(90deg, #27bf00 0%, #1a8a00 100%)',
-            boxShadow: '0 0 8px rgba(39, 191, 0, 0.35)',
+            boxShadow: '0 0 8px color-mix(in srgb, var(--color-accent) 35%, transparent)',
           }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: progress / 100 }}

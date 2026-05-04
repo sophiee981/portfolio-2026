@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const STROKE_COLOR = "rgba(255, 255, 255, 0.16)";
+const STROKE_COLOR = "rgba(255, 255, 255, 0.20)";
 const STROKE_WIDTH = 0.6;
 
 interface ShapeProps {

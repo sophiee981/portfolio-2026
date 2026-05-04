@@ -14,7 +14,7 @@ export default function ProjectCard({ work, onClick }: ProjectCardProps) {
       className="group relative flex h-full w-full cursor-pointer flex-col justify-end overflow-hidden bg-bg text-left"
     >
       {thumbnailImage && (
-        <div className="absolute inset-0 opacity-100 grayscale-0 md:grayscale md:opacity-50 transition-all duration-500 md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:scale-[1.03]">
+        <div className="absolute inset-0 transition-all duration-500 md:brightness-[0.75] md:group-hover:brightness-100 md:group-hover:scale-[1.03]">
           <img
             src={thumbnailImage}
             alt=""
@@ -25,8 +25,8 @@ export default function ProjectCard({ work, onClick }: ProjectCardProps) {
         </div>
       )}
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/40 to-transparent" />
+      {/* Gradient overlay — only at bottom for text legibility */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-bg via-bg/70 to-transparent" />
 
       {/* Title + meta — bottom-left */}
       <div className="relative z-10 p-6 sm:p-8 md:p-12">
