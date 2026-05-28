@@ -40,27 +40,26 @@ const FRAGMENT_SHADER = `
       ripple * 0.03 + ny
     ) * strength;
 
-    // RGB split — 3 copies of text, each offset in different direction, pure R/G/B
+    // Purple split — 2 offset copies in purple tones
     float spread = strength * 0.06;
     vec2 dir = normalize(uv - u_mouse + 0.001);
 
-    // Red copy — offset along mouse direction
-    float r = texture2D(u_texture, uv + offset + dir * spread).a * 1.0;
-
-    // Green copy — offset perpendicular
-    vec2 perp = vec2(-dir.y, dir.x);
-    float g = texture2D(u_texture, uv + offset + perp * spread).a * 1.0;
-
-    // Blue copy — offset opposite
-    float b = texture2D(u_texture, uv + offset - dir * spread * 0.8).a * 1.0;
-
-    // Original white text on top (where no offset)
+    // Original text
     float original = texture2D(u_texture, uv + offset).a;
-    r = max(r, original);
-    g = max(g, original);
-    b = max(b, original);
 
-    float a = max(max(r, g), b);
+    // Copy 1 — offset along mouse direction
+    float copy1 = texture2D(u_texture, uv + offset + dir * spread).a;
+
+    // Copy 2 — offset opposite
+    float copy2 = texture2D(u_texture, uv + offset - dir * spread * 0.8).a;
+
+    // Purple tint on split copies: rgb(180, 120, 255)
+    float glow = max(copy1, copy2);
+    float r = max(original, glow * 0.71);
+    float g = max(original, glow * 0.47);
+    float b = max(original, glow * 1.0);
+
+    float a = max(original, glow);
 
     gl_FragColor = vec4(r, g, b, a);
   }

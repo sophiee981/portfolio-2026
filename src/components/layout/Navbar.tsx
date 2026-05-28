@@ -4,11 +4,75 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 import LiquidText from "@/components/common/LiquidText";
+import ToolMarquee from "@/components/home/ToolMarquee";
 
 const navLinks = [
   { label: "Projects", to: "/" },
-  { label: "Team", to: "/profile" },
+  { label: "Profile", to: "/profile" },
 ];
+
+function BloomingFlower({ size = 120 }: { size?: number }) {
+  const petalCount = 5
+  return (
+    <div className="relative" style={{ width: size, height: size }}>
+      <motion.svg
+        width={size}
+        height={size}
+        viewBox="0 0 200 200"
+        className="absolute inset-0 text-text-primary"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      >
+        {Array.from({ length: petalCount }).map((_, i) => {
+          const baseAngle = (360 / petalCount) * i - 90
+          return (
+            <ellipse
+              key={i}
+              cx="100"
+              cy="100"
+              rx="65"
+              ry="24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={0.6}
+              opacity={0.6}
+              transform={`rotate(${baseAngle + 15} 100 100)`}
+            />
+          )
+        })}
+      </motion.svg>
+      <motion.div
+        className="absolute inset-0 m-auto rounded-full border border-text-primary/10"
+        style={{ width: size * 0.45, height: size * 0.45 }}
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  )
+}
+
+function SophieLogo() {
+  return (
+    <div className="flex items-center justify-between">
+      <LiquidText
+        className="text-text-primary cursor-pointer select-none font-normal italic"
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: "clamp(4rem, 16vw, 18rem)",
+          letterSpacing: "-0.05em",
+          lineHeight: 1.15,
+        }}
+      >
+        Sophie
+      </LiquidText>
+
+      <BloomingFlower size={280} />
+    </div>
+  )
+}
 
 export default function Navbar() {
   const location = useLocation();
@@ -43,28 +107,21 @@ export default function Navbar() {
         ref={logoSectionRef as React.RefObject<HTMLDivElement>}
         className="relative"
         style={{
-          height: "calc(clamp(4rem, 16vw, 18rem) * 1.2 + 3rem)",
+          height: "calc(clamp(4rem, 16vw, 18rem) * 1.15 + 4rem)",
         }}
       >
-        <div className="fixed top-0 left-0 z-0 w-full max-w-[var(--container-max)]">
+        <div className="fixed top-0 left-0 z-0 w-full">
           <div className="px-6 sm:px-8 md:px-12">
-            <Link to="/" aria-label="Slug Macro — Home" className="block">
+            <Link to="/" aria-label="Sophie — Home" className="block">
               <motion.div className="pt-8 md:pt-12" style={{ opacity: logoOpacity }}>
-                <LiquidText
-                  className="select-none text-text-primary leading-[0.8] font-bold cursor-pointer"
-                  style={{
-                    fontFamily: "'Bodoni Moda', serif",
-                    fontSize: "clamp(4rem, 16vw, 18rem)",
-                    letterSpacing: "-0.05em",
-                  }}
-                >
-                  L4D Team
-                </LiquidText>
+                <SophieLogo />
               </motion.div>
             </Link>
           </div>
         </div>
       </div>
+
+      <ToolMarquee />
 
       {/* Nav bar — sticky top */}
       <header
@@ -83,7 +140,7 @@ export default function Navbar() {
               scrolled ? "py-4 sm:py-5" : "py-4 sm:py-8 md:py-12",
             )}
           >
-            Lean Design. Sharp Delivery.
+            Designer & Creative
           </div>
 
           <div
@@ -120,7 +177,7 @@ export default function Navbar() {
                   : "text-text-secondary",
               )}
             >
-              Team
+              Profile
             </Link>
           </div>
 
