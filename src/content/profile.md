@@ -1,13 +1,13 @@
 ---
-name: L4D Team
-title: L4D Team
-tagline: Product Design Team
+name: Sophie Nguyen
+title: Sophie Nguyen
+tagline: Product Designer
 location: Vietnam
 coordinates: "10.7769° N, 106.7009° E"
-email: l4d.design.team@gmail.com
-phone: "+84 866 206 999"
+email: xuangd98@gmail.com
+phone: "+84 38 279 0088"
 availability: available
-availability_label: "Open to new projects & collaborations"
+availability_label: "Open to product designer roles"
 socialLinks: []
 services:
   - Product Design
@@ -76,7 +76,7 @@ skills:
     - "✦ Prototyping"
     - "✦ Data Visualization"
 homeIntro:
-  - "Hi, my name is Nguyen Xuan - UI/UX Designer with 4 years of experience specializing in sectors like Web3, AI-driven SaaS and mobile app. By leveraging AI-assisted development and scalable design systems, I focus on delivering high-impact solutions that simplify complex technologies for end users."
+  - "Hi, my name is Nguyen Xuan - Product Designer with 4 years of experience specializing in sectors like Web3, AI-driven SaaS and mobile app. By leveraging AI-assisted development and scalable design systems, I focus on delivering high-impact solutions that simplify complex technologies for end users."
   - "For me, design is more than visuals - it's a way to solve problems and tell meaningful stories. I aspire to be seen as a young, ambitious and innovative designer who is constantly evolving, and who uses his passion to help others bring their visions to life."
 ---
 

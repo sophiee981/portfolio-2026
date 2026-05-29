@@ -44,7 +44,7 @@ function PhotoCard() {
         <img
           alt="Nguyen Xuan"
           className="h-full w-full object-cover"
-          src="/images/avatar.jpg"
+          src="/images/avatar.jpeg"
         />
 
         {/* Badge: 4+ YRS XP */}
