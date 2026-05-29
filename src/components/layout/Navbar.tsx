@@ -110,7 +110,7 @@ export default function Navbar() {
           height: "calc(clamp(4rem, 16vw, 18rem) * 1.15 + 4rem)",
         }}
       >
-        <div className="fixed top-0 left-0 z-0 w-full">
+        <div className="fixed top-0 left-0 z-[6] w-full bg-bg">
           <div className="px-6 sm:px-8 md:px-12">
             <Link to="/" aria-label="Sophie — Home" className="block">
               <motion.div className="pt-8 md:pt-12" style={{ opacity: logoOpacity }}>
@@ -133,14 +133,14 @@ export default function Navbar() {
             : "border-b border-b-transparent",
         )}
       >
-        <nav className="grid grid-cols-2 sm:grid-cols-4 [&>div]:transition-[padding] [&>div]:duration-300">
+        <nav className="grid grid-cols-2 sm:grid-cols-4 uppercase [&>div]:transition-[padding] [&>div]:duration-300">
           <div
             className={cn(
               "px-6 text-[0.875rem] leading-relaxed tracking-wide text-text-secondary whitespace-nowrap sm:px-8 md:px-12",
               scrolled ? "py-4 sm:py-5" : "py-4 sm:py-8 md:py-12",
             )}
           >
-            Designer & Creative
+            Product Designer
           </div>
 
           <div
@@ -154,7 +154,7 @@ export default function Navbar() {
               className={cn(
                 "transition-opacity duration-300 hover:opacity-60",
                 location.pathname === "/"
-                  ? "text-text-primary font-medium"
+                  ? "text-text-primary font-medium underline decoration-accent underline-offset-4"
                   : "text-text-secondary",
               )}
             >
@@ -173,7 +173,7 @@ export default function Navbar() {
               className={cn(
                 "transition-opacity duration-300 hover:opacity-60",
                 location.pathname === "/profile"
-                  ? "text-text-primary font-medium"
+                  ? "text-text-primary font-medium underline decoration-accent underline-offset-4"
                   : "text-text-secondary",
               )}
             >

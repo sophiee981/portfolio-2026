@@ -76,11 +76,8 @@ skills:
     - "✦ Prototyping"
     - "✦ Data Visualization"
 homeIntro:
-  - "Hi, we are L4D Team — High-performance product design team."
-  - "We design digital products end-to-end — from research and data modeling to architecture, UX flows, and scalable UI systems."
-  - "Our approach is built on lean thinking, strong logic, and precise execution — where clarity meets structure, and ideas turn into real, high-performance products."
-  - "We don't just design. We build alongside the product."
-  - "Focused on Fintech, DeFi, and AI-native systems — turning complexity into intuitive, actionable experiences."
+  - "Hi, my name is Nguyen Xuan - UI/UX Designer with 4 years of experience specializing in sectors like Web3, AI-driven SaaS and mobile app. By leveraging AI-assisted development and scalable design systems, I focus on delivering high-impact solutions that simplify complex technologies for end users."
+  - "For me, design is more than visuals - it's a way to solve problems and tell meaningful stories. I aspire to be seen as a young, ambitious and innovative designer who is constantly evolving, and who uses his passion to help others bring their visions to life."
 ---
 
 L4D is a design studio focused on Fintech, DeFi, and AI-native products. We work end-to-end — from research and data modeling to architecture, UX flows, and scalable UI systems. Our approach is built on lean thinking, strong logic, and precise execution. We don't just design — we build alongside the product, shortening the cycle from idea to production.

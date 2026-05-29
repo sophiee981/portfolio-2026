@@ -52,11 +52,11 @@ const separator = (
 function ToolItem({ name, badge, icon }: typeof tools[number]) {
   return (
     <div className="flex items-center gap-4 px-4">
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border">{icon}</span>
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border transition-transform duration-300 ease-out hover:scale-125 hover:-rotate-6">{icon}</span>
       <span className="whitespace-nowrap text-[18px] font-medium tracking-wide text-text-primary">
         {name}
       </span>
-      <span className="whitespace-nowrap rounded-full border border-border px-3 py-1 text-[0.6875rem] uppercase tracking-widest text-text-tertiary">
+      <span className="whitespace-nowrap rounded-full border border-border px-3 py-1 text-[0.6875rem] uppercase tracking-widest text-text-tertiary transition-colors duration-300 hover:text-text-primary hover:border-text-secondary">
         {badge}
       </span>
     </div>
