@@ -17,7 +17,7 @@ export default function ProfilePage() {
         <Experience experience={profile.data.experience} />
       </AnimatedSection>
       <AnimatedSection delay={0.15}>
-        <Skills skills={profile.data.skills} />
+        {profile.data.skills && <Skills skills={profile.data.skills} />}
       </AnimatedSection>
       <AnimatedSection delay={0.2}>
         <InfoPanel data={profile.data} />
