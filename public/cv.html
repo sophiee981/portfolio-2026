@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nguyễn Thị Xuân — Product Designer · CV</title>
+  <style>
+    :root {
+      --bg: #f5f4f7;
+      --paper: #ffffff;
+      --fg: #1a1a2e;
+      --muted: #6b6b80;
+      --light: #9d9daf;
+      --border: #e2e0e8;
+      --accent: #6c3fc5;
+      --accent-light: #f3eefb;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding: 32px 16px 56px;
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      background: var(--paper);
+      width: 210mm;
+      min-height: 297mm;
+      padding: 48px 52px 56px;
+      box-shadow:
+        0 1px 3px rgba(30, 20, 50, .04),
+        0 16px 48px rgba(30, 20, 50, .08);
+    }
+
+    /* ── Header ── */
+    .header {
+      margin-bottom: 8px;
+    }
+
+    .header h1 {
+      font-size: 42pt;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--fg);
+    }
+
+    .header .subtitle {
+      font-size: 12pt;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .header .subtitle span {
+      color: var(--accent);
+    }
+
+    .contact-row {
+      margin-top: 14px;
+      padding-bottom: 20px;
+      font-size: 9.5pt;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-row .line {
+      display: block;
+    }
+
+    /* ── Section grid ── */
+    .section {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 0 40px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--fg);
+      padding-top: 2px;
+    }
+
+    .section-content {
+      min-width: 0;
+    }
+
+    /* ── Summary ── */
+    .summary-text {
+      font-size: 10.5pt;
+      line-height: 1.65;
+      color: var(--fg);
+    }
+
+    .summary-text strong {
+      font-weight: 600;
+    }
+
+    .summary-sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    /* ── Experience ── */
+    .role + .role {
+      margin-top: 26px;
+    }
+
+    .role-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .role-company {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--fg);
+      letter-spacing: -0.005em;
+    }
+
+    .role-period {
+      font-size: 9pt;
+      color: var(--light);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .role-title {
+      font-size: 9.5pt;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .role-bullets {
+      margin-top: 10px;
+      padding-left: 18px;
+      font-size: 10pt;
+      line-height: 1.6;
+      color: var(--fg);
+    }
+
+    .role-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .role-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    .role-bullets li::marker {
+      color: var(--accent);
+    }
+
+    /* ── Skills ── */
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 9.5pt;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 5px 14px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Projects ── */
+    .projects-text {
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: var(--fg);
+    }
+
+    .project + .project {
+      margin-top: 22px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-name {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--fg);
+    }
+
+    .project-period {
+      font-size: 9pt;
+      color: var(--light);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .project-role {
+      font-size: 9.5pt;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .project-bullets {
+      margin-top: 10px;
+      padding-left: 18px;
+      font-size: 10pt;
+      line-height: 1.6;
+      color: var(--fg);
+    }
+
+    .project-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .project-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-bullets li::marker {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        min-height: auto;
+        padding: 28px 22px 36px;
+        box-shadow: none;
+      }
+
+      .header h1 {
+        font-size: 28pt;
+      }
+
+      .section {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .section-label {
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+
+      .page {
+        box-shadow: none;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 40px 48px;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      .skill-tag {
+        border: 1px solid var(--border);
+        background: transparent;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <article class="page">
+
+    <header class="header">
+      <h1>Nguyễn Thị Xuân</h1>
+      <div class="subtitle">Product Designer <span>—</span> Web3, AI SaaS &amp; Mobile App</div>
+      <div class="contact-row">
+        <span class="line">Trung Văn, Hà Nội</span>
+        <span class="line">0382 790 088 · xuangd98@gmail.com</span>
+        <span class="line"><a href="https://sophie-me.vercel.app/">sophie-me.vercel.app</a></span>
+      </div>
+    </header>
+
+    <div class="section">
+      <div class="section-label">Tóm tắt</div>
+      <div class="section-content">
+        <p class="summary-text">
+          Product Designer với 4 năm kinh nghiệm chuyên sâu trong lĩnh vực Web3, AI-driven SaaS và ứng dụng di động.
+          Chuyên chuyển đổi các giao thức kỹ thuật phức tạp và dữ liệu học thuật thành giao diện trực quan, sẵn sàng cho production trên cả nền tảng web và mobile.
+        </p>
+        <p class="summary-sub">
+          Tận dụng phát triển hỗ trợ bởi AI và hệ thống thiết kế có khả năng mở rộng để mang đến các giải pháp
+          có tác động cao, đơn giản hóa công nghệ phức tạp cho người dùng cuối.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Kinh nghiệm</div>
+      <div class="section-content">
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-company">OneMount Group</span>
+            <span class="role-period">05.2026 → Hiện tại</span>
+          </div>
+          <div class="role-title">Product Designer</div>
+          <ul class="role-bullets">
+            <li>Thiết kế trải nghiệm end-to-end cho nền tảng portal B2B phục vụ khách hàng doanh nghiệp</li>
+            <li>Xây dựng và duy trì hệ thống thiết kế có khả năng mở rộng xuyên suốt các dòng sản phẩm</li>
+            <li>Phối hợp với PM và Engineers để xác định yêu cầu sản phẩm và thiết kế luồng người dùng</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-company">Lab3 Company</span>
+            <span class="role-period">02.2023 → 04.2026</span>
+          </div>
+          <div class="role-title">Product Designer</div>
+          <ul class="role-bullets">
+            <li>Phối hợp đa chức năng với PO, PM và Engineers để đảm bảo thiết kế pixel-perfect, duy trì tính toàn vẹn qua kiểm tra QA và theo dõi lỗi sau ra mắt</li>
+            <li>Xây dựng luồng người dùng phức tạp và thiết kế tương tác cho hệ sinh thái đa dạng: nền tảng giao dịch Web3, công cụ AI, ứng dụng di động và web app game</li>
+            <li>Mở rộng tính năng sản phẩm xuyên suốt hệ sinh thái, thiết kế song song nhiều dự án từ cập nhật tính năng, sửa thiết kế đến interactive design</li>
+            <li>Tận dụng AI-assisted development (vibe coding) để nhanh chóng xây dựng và ship các MVP chức năng</li>
+            <li>Cung cấp giải pháp thiết kế end-to-end, chuyển đổi các giao thức kỹ thuật phức tạp — dữ liệu phi tập trung, AI Generative Engine Optimization — thành giao diện B2B và B2C thân thiện</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-company">JoomlArt Company</span>
+            <span class="role-period">03.2022 → 02.2023</span>
+          </div>
+          <div class="role-title">UI/UX Designer</div>
+          <ul class="role-bullets">
+            <li>Nghiên cứu và phát triển giải pháp thiết kế cho các template cao cấp trên nền tảng Joomla</li>
+            <li>Xây dựng hệ thống thiết kế có khả năng mở rộng và bố cục website theo xu hướng UI/UX mới nhất</li>
+            <li>Đảm bảo chất lượng thiết kế đầu ra đạt chuẩn marketplace</li>
+            <li>Thiết kế landing page và tài liệu marketing trực quan bao gồm banner, poster để quảng bá sản phẩm</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Dự án</div>
+      <div class="section-content">
+        <p class="summary-text">
+          Các dự án tiêu biểu trong lĩnh vực nền tảng giao dịch, công cụ AI và sản phẩm Web3 — Portfolio: <a href="https://sophie-me.vercel.app/">sophie-me.vercel.app</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Kỹ năng</div>
+      <div class="section-content">
+        <div class="skills-row">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Design System</span>
+          <span class="skill-tag">Vibe Coding</span>
+          <span class="skill-tag">AI-assisted Prototyping</span>
+          <span class="skill-tag">Interactive Design</span>
+          <span class="skill-tag">Web3 & AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Chứng chỉ</div>
+      <div class="section-content">
+        <div class="skills-row">
+          <span class="skill-tag">Capidemy — Mobile App Website Design</span>
+          <span class="skill-tag">Capidemy — User Interface Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Thông tin</div>
+      <div class="section-content">
+        <div class="skills-row">
+          <span class="skill-tag">Ngày sinh: 23/10/1998</span>
+          <span class="skill-tag">Tiếng Việt — Bản ngữ</span>
+          <span class="skill-tag">English — Công việc</span>
+        </div>
+      </div>
+    </div>
+
+  </article>
+</body>
+
+</html>
