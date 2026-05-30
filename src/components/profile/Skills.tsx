@@ -20,7 +20,7 @@ function renderBold(text: string) {
 export default function Skills({ skills }: SkillsProps) {
   return (
     <section className="border-t border-border py-12 sm:py-16 md:py-24">
-      <div className="grid grid-cols-1 sm:grid-cols-4">
+      <div className="grid grid-cols-1 items-start sm:grid-cols-4">
         <div className="px-6 sm:px-8 md:px-12">
           <p className="text-[0.875rem] font-medium tracking-wide text-text-primary">
             Skills
@@ -32,7 +32,7 @@ export default function Skills({ skills }: SkillsProps) {
             {skills.summary}
           </p>
 
-          <ul className="mt-6 list-disc space-y-2 pl-4">
+          <ul className="mt-6 list-disc space-y-2 pl-4 marker:text-accent">
             {skills.items.map((item, i) => (
               <li
                 key={i}

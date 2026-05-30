@@ -19,7 +19,7 @@ export default function WorkHero({ data, content }: WorkHeroProps) {
       <section className="pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24">
         <Container>
           {/* Title */}
-          <h1 className="text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-text-primary">
+          <h1 className="work-title text-[clamp(2.5rem,5vw,5rem)] leading-[1.1] italic tracking-[-0.03em] text-text-primary">
             {data.title}
           </h1>
 

@@ -10,7 +10,7 @@ tags:
   - Prediction Market
   - Web App
 role: Product Design
-featured: true
+featured: false
 featuredOrder: 2
 heroImage: "/images/whales-predict/hero.png"
 galleryImages:

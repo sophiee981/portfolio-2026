@@ -26,9 +26,19 @@ export default function Experience({ experience }: ExperienceProps) {
                   {entry.location && `, ${entry.location}`}
                 </p>
                 {entry.description && (
-                  <p className="mt-4 text-[0.875rem] leading-[1.6] tracking-wide text-text-primary">
-                    {entry.description}
-                  </p>
+                  Array.isArray(entry.description) ? (
+                    <ul className="mt-4 list-disc pl-5 space-y-2 marker:text-accent">
+                      {entry.description.map((line, j) => (
+                        <li key={j} className="text-[0.875rem] leading-[1.6] tracking-wide text-text-primary">
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-4 text-[0.875rem] leading-[1.6] tracking-wide text-text-primary">
+                      {entry.description}
+                    </p>
+                  )
                 )}
               </div>
             ))}

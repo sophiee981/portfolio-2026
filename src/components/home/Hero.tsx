@@ -40,7 +40,7 @@ function PhotoCard() {
   return (
     <StampFrame>
       {/* Inner image area */}
-      <div className="relative overflow-hidden rounded-sm" style={{ width: 480, height: 480 }}>
+      <div className="relative overflow-hidden rounded-sm w-full max-w-[400px] aspect-square">
         <img
           alt="Nguyen Xuan"
           className="h-full w-full object-cover"
@@ -53,16 +53,12 @@ function PhotoCard() {
           <span className="mt-1 text-[6px] font-bold uppercase leading-none tracking-widest text-bg">YRS XP</span>
         </div>
 
-        {/* Label bottom-right */}
-        <div className="absolute right-4 bottom-4 z-10 select-none rounded border border-neutral-700/80 bg-neutral-900/90 px-2.5 py-1.5 font-mono text-[7px] font-bold uppercase tracking-widest text-accent shadow-lg backdrop-blur-sm">
-          ⚡ UI_SYS_V4.0
-        </div>
       </div>
 
       {/* Caption */}
       <div className="select-none pt-[12px] text-center">
         <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.25em] text-accent/80">
-          Nguyen Xuan &bull; Product Designer
+          Sophie &bull; Product Designer
         </span>
       </div>
     </StampFrame>
@@ -77,10 +73,10 @@ export default function Hero() {
       className="border-b border-border py-16 sm:py-24 md:py-28 lg:py-36"
     >
       <AnimatedSection>
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-4 sm:gap-0">
+        <div className="grid grid-cols-1 items-start gap-12 sm:grid-cols-4 sm:gap-0">
           {/* Cols 1-3: intro + CTA */}
           <div className="col-span-1 px-6 sm:col-span-3 sm:px-8 md:px-12">
-            <div className="max-w-[1000px] space-y-4 text-[clamp(1.125rem,1.5vw,1.5rem)] leading-[1.4] font-light text-text-primary">
+            <div className="max-w-[960px] space-y-4 text-[24px] leading-[1.4] font-light text-text-primary">
               {profile.data.homeIntro && profile.data.homeIntro.length > 0 ? (
                 profile.data.homeIntro.map((para, i) => <p key={i}>{para}</p>)
               ) : (
@@ -102,7 +98,7 @@ export default function Hero() {
                 }}
                 className="group inline-flex cursor-pointer items-center gap-3 border border-border px-6 py-4 text-[0.875rem] tracking-wide text-text-primary transition-colors duration-300 hover:border-accent"
               >
-                <span>Explore our work</span>
+                <span>Explore my work</span>
                 <span className="text-text-tertiary">/2025-2026</span>
                 <svg
                   width="14"

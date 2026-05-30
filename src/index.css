@@ -215,6 +215,11 @@
     }
   }
 
+  .work-title {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 400 !important;
+  }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,

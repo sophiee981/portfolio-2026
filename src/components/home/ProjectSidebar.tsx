@@ -99,7 +99,7 @@ export default function ProjectSidebar({ work, onClose, onPrev, onNext }: Projec
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-0 right-0 bottom-0 w-full overflow-y-auto bg-bg border-l border-border [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:w-[75%]"
+              className="absolute top-0 right-0 bottom-0 w-[85%] overflow-y-auto bg-bg border-l border-border [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:w-[60%]"
             >
             {/* Nav controls — floating top-right */}
             <div className="sticky top-4 z-10 flex items-center gap-2 justify-end mr-4">
@@ -144,9 +144,9 @@ export default function ProjectSidebar({ work, onClose, onPrev, onNext }: Projec
               <LiquidText
                 key={work.data.slug}
                 radius={0.2}
-                className="text-text-primary leading-[1] font-bold"
+                className="text-text-primary leading-[1] font-normal italic"
                 style={{
-                  fontFamily: "'Bodoni Moda', serif",
+                  fontFamily: "'Playfair Display', serif",
                   fontSize: 'clamp(2rem, 5.5vw, 5rem)',
                   letterSpacing: '-0.03em',
                 }}

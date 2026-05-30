@@ -10,7 +10,7 @@ tags:
   - Web App
   - Mobile App
 role: Product Design
-featured: true
+featured: false
 featuredOrder: 8
 galleryLayout: pattern
 galleryImages:
