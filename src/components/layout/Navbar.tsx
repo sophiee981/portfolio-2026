@@ -61,7 +61,7 @@ function SophieLogo() {
         className="text-text-primary cursor-pointer select-none font-normal italic"
         style={{
           fontFamily: "'Playfair Display', serif",
-          fontSize: "clamp(4rem, 16vw, 18rem)",
+          fontSize: "clamp(3rem, 14vw, 18rem)",
           letterSpacing: "-0.05em",
           lineHeight: 1.15,
         }}
@@ -69,7 +69,9 @@ function SophieLogo() {
         Sophie
       </LiquidText>
 
-      <BloomingFlower size={280} />
+      <div className="hidden sm:block">
+        <BloomingFlower size={280} />
+      </div>
     </div>
   )
 }
